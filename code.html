@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nadiya Mutiara Isnaini - Creative DKV Portfolio</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Fredoka & Plus Jakarta Sans & Comic Neue -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,700&amp;family=Fredoka:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Caveat:wght@700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#54A0FF',
+              darkPurple: '#2E86DE',
+              lightPurple: '#E8F4FD',
+              accent: '#FFB800',
+              charcoal: '#22222E'
+            }
+          },
+          fontFamily: {
+            fun: ['"Fredoka"', 'sans-serif'],
+            hand: ['"Comic Neue"', 'cursive', 'sans-serif'],
+            script: ['"Caveat"', 'cursive'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="torn-paper-and-effects">
+    /* Torn paper divider effect using CSS clip-path simulation */
+    .torn-top-edge {
+      filter: drop-shadow(0 -4px 6px rgba(0, 0, 0, 0.08));
+    }
+    
+    /* Fun Sticker & 3D Shadow styles */
+    .sticker-shadow {
+      box-shadow: 6px 6px 0px rgba(34, 34, 46, 0.95);
+      transition: all 0.2s ease-in-out;
+    }
+    .sticker-shadow:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px rgba(34, 34, 46, 0.95);
+    }
+
+    .sticker-shadow-purple {
+      box-shadow: 5px 5px 0px #1E40AF;
+    }
+
+    .badge-clip {
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hand drawn doodle outlines for numbers */
+    .doodle-number {
+      font-family: 'Caveat', 'Comic Neue', cursive;
+      -webkit-text-stroke: 2.5px rgba(255, 255, 255, 0.75);
+      color: transparent;
+      user-select: none;
+    }
+    
+    .doodle-number-alt {
+      -webkit-text-stroke: 2.5px #FFB800;
+      color: transparent;
+    }
+
+    /* Lanyard strap pattern */
+    .lanyard-strap {
+      background: repeating-linear-gradient(
+        45deg,
+        #2A3B53,
+        #2A3B53 10px,
+        #1E2C3F 10px,
+        #1E2C3F 20px
+      );
+    }
+
+    /* Scroll Reveal Animation Styles */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Floating Background Doodle Animations */
+    @keyframes floatSlow {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(6deg);
+      }
+    }
+    @keyframes floatDrift {
+      0%, 100% {
+        transform: translate(0px, 0px) rotate(-12deg);
+      }
+      33% {
+        transform: translate(15px, -20px) rotate(-2deg);
+      }
+      66% {
+        transform: translate(-12px, 15px) rotate(-18deg);
+      }
+    }
+    .animate-float-1 {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+    .animate-float-2 {
+      animation: floatDrift 9s ease-in-out infinite;
+    }
+    @keyframes moveDown {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+      }
+    }
+    .animate-fall {
+      animation: moveDown 10s linear infinite;
+    }
+    @keyframes kelapKelip {
+      0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 12px rgba(84, 160, 255, 0.9), 0 0 20px rgba(255, 184, 0, 0.7);
+      }
+      50% {
+        opacity: 0.5;
+        text-shadow: 0 0 2px rgba(84, 160, 255, 0.3);
+      }
+    }
+    .animate-kelap-kelip {
+      animation: kelapKelip 1.2s ease-in-out infinite;
+    }
+    .puzzle-letter {
+      cursor: pointer;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+    }
+    .puzzle-letter.shattered {
+      transform: translate(var(--dx), var(--dy)) rotate(var(--drot)) scale(0.3);
+      opacity: 0;
+      pointer-events: none;
+    }
+    @keyframes bgZoomPan {
+      0% {
+        background-size: 100% 100%;
+        background-position: center center;
+      }
+      100% {
+        background-size: 112% 112%;
+        background-position: 55% 45%;
+      }
+    }
+    .realistic-bg {
+      background-image: url('wp5.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    @keyframes bubbleFloat {
+      0% {
+        transform: translateY(105vh) translateX(0px) rotate(0deg) scale(0.6);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-50px) translateX(35px) rotate(360deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+    .animate-bubble {
+      animation: bubbleFloat 9s ease-in-out infinite;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="font-body text-brand-charcoal min-h-screen overflow-x-hidden selection:bg-brand-purple selection:text-white relative realistic-bg">
+<!-- BEGIN: Floating Doodle Background Elements -->
+<div aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+<!-- Falling Star 1 -->
+<svg class="absolute -top-10 left-[10%] w-8 h-8 text-yellow-300 opacity-80 animate-fall" style="animation-duration: 8s; animation-delay: 0s;" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 .587l3.668 7.431 8.212 1.192-5.94 5.787 1.401 8.168-7.341-3.861-7.341 3.861 1.401-8.168-5.94-5.787 8.212-1.192z"></path>
+</svg>
+<!-- Falling Star 2 -->
+<svg class="absolute -top-10 left-[30%] w-10 h-10 text-sky-300 opacity-70 animate-fall" style="animation-duration: 11s; animation-delay: 3s;" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 .587l3.668 7.431 8.212 1.192-5.94 5.787 1.401 8.168-7.341-3.861-7.341 3.861 1.401-8.168-5.94-5.787 8.212-1.192z"></path>
+</svg>
+<!-- Falling Star 3 -->
+<svg class="absolute -top-10 left-[65%] w-7 h-7 text-yellow-200 opacity-80 animate-fall" style="animation-duration: 7s; animation-delay: 1.5s;" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 .587l3.668 7.431 8.212 1.192-5.94 5.787 1.401 8.168-7.341-3.861-7.341 3.861 1.401-8.168-5.94-5.787 8.212-1.192z"></path>
+</svg>
+<!-- Falling Star 4 -->
+<svg class="absolute -top-10 left-[85%] w-9 h-9 text-blue-200 opacity-70 animate-fall" style="animation-duration: 9s; animation-delay: 4.5s;" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 .587l3.668 7.431 8.212 1.192-5.94 5.787 1.401 8.168-7.341-3.861-7.341 3.861 1.401-8.168-5.94-5.787 8.212-1.192z"></path>
+</svg>
+<!-- Floating Bubbles -->
+<div class="absolute bottom-[-50px] left-[15%] w-12 h-12 rounded-full bg-white/20 backdrop-blur-xs border-2 border-white/40 animate-bubble" style="animation-duration: 8s; animation-delay: 0s;"></div>
+<div class="absolute bottom-[-50px] left-[40%] w-16 h-16 rounded-full bg-blue-400/20 backdrop-blur-xs border-2 border-blue-400/30 animate-bubble" style="animation-duration: 11s; animation-delay: 2s;"></div>
+<div class="absolute bottom-[-50px] left-[70%] w-10 h-10 rounded-full bg-yellow-300/25 backdrop-blur-xs border-2 border-yellow-300/40 animate-bubble" style="animation-duration: 7s; animation-delay: 1s;"></div>
+<div class="absolute bottom-[-50px] left-[88%] w-14 h-14 rounded-full bg-purple-400/20 backdrop-blur-xs border-2 border-purple-400/30 animate-bubble" style="animation-duration: 9.5s; animation-delay: 3.5s;"></div>
+<!-- Paper Airplane Doodle -->
+<svg class="absolute top-20 right-16 w-20 h-20 text-white opacity-70 animate-float-1" style="animation-delay: 2s;" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 100 100">
+<path d="M10 50 L90 20 L50 90 L45 60 L80 30 L35 55 Z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 65 C5 75, 25 85, 35 75" stroke-dasharray="4 4" stroke-linecap="round"></path>
+</svg>
+</div>
+<!-- END: Floating Doodle Background Elements -->
+<!-- Main Container -->
+<div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+<!-- BEGIN: Hero Section -->
+<header class="relative mb-12" data-purpose="portfolio-header">
+<!-- Top Badges & Navigation bar-like header note -->
+<div class="flex items-center justify-between pb-6 border-b border-dashed border-gray-300">
+<div class="inline-flex items-center gap-2 bg-brand-lightPurple px-4 py-1.5 rounded-full border border-brand-purple/20">
+<span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"></span>
+<span class="text-xs font-semibold text-brand-purple font-fun uppercase tracking-wider">Available for Creative Works</span>
+</div>
+<div class="font-hand font-bold text-gray-500 text-sm tracking-wide">
+          SMK DKV Student • Creative &amp; Visual Identity
+        </div>
+</div>
+<!-- Hero Canvas with Cutout "PORTFOLIO" Letters & Character/Lanyard Composition -->
+<div class="relative mt-8 min-h-[380px] sm:min-h-[440px] flex flex-col items-center justify-center">
+<!-- Big Playful PORTFOLIO Typography with Layered Cutout Blocks -->
+<div class="relative z-10 select-none flex items-center justify-center flex-wrap gap-1 sm:gap-2 scale-90 sm:scale-100 transition-transform">
+<!-- P -->
+<div class="bg-brand-purple text-white font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl -rotate-6 sticker-shadow puzzle-letter">
+            P
+          </div>
+<!-- O with small badge inside -->
+<div class="relative bg-white text-brand-purple font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl rotate-3 border-4 border-brand-purple sticker-shadow puzzle-letter">
+            O
+            <span class="absolute -top-3 -right-2 bg-yellow-400 text-brand-charcoal text-xs font-hand font-bold px-2 py-0.5 rounded-md rotate-12 border border-black">DKV!</span>
+</div>
+<!-- R -->
+<div class="bg-brand-purple text-white font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl -rotate-3 sticker-shadow puzzle-letter">
+            R
+          </div>
+<!-- T -->
+<div class="bg-yellow-400 text-brand-charcoal font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl rotate-6 sticker-shadow puzzle-letter">
+            T
+          </div>
+<!-- F -->
+<div class="bg-brand-purple text-white font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl -rotate-12 sticker-shadow puzzle-letter">
+            F
+          </div>
+<!-- O -->
+<div class="bg-white text-brand-purple font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl rotate-2 border-4 border-brand-purple sticker-shadow puzzle-letter">
+            O
+          </div>
+<!-- L -->
+<div class="bg-brand-purple text-white font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl -rotate-6 sticker-shadow puzzle-letter">
+            L
+          </div>
+<!-- I -->
+<div class="bg-pink-500 text-white font-fun font-black text-6xl sm:text-8xl w-14 sm:w-20 h-24 sm:h-32 flex items-center justify-center rounded-2xl rotate-6 sticker-shadow puzzle-letter">
+            I
+          </div>
+<!-- O -->
+<div class="bg-brand-purple text-white font-fun font-black text-6xl sm:text-8xl w-20 sm:w-28 h-24 sm:h-32 flex items-center justify-center rounded-2xl -rotate-3 sticker-shadow puzzle-letter">
+            O
+          </div>
+</div>
+
+<!-- Right Side Doodle Sticker -->
+<div class="hidden lg:flex absolute right-6 top-10 flex-col items-center rotate-6 pointer-events-none">
+<div class="bg-white border-2 border-brand-charcoal px-4 py-2 rounded-xl sticker-shadow text-center">
+<span class="block font-hand font-bold text-brand-purple text-lg">💡 Ideas to Visuals</span>
+<span class="text-xs text-gray-600 font-fun">Passion in Graphic Design</span>
+</div>
+<svg class="w-10 h-10 text-brand-purple mt-2 -rotate-45" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: Hero Section -->
+<!-- BEGIN: Main Content White Card (Note / Clipboard Paper Style) -->
+<main class="relative bg-white rounded-3xl border-4 border-brand-charcoal sticker-shadow p-6 sm:p-10 mb-16" data-purpose="about-and-skills-card">
+<!-- Pushpin / Paper Clip Visual Element -->
+<div class="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-500 border-2 border-brand-charcoal shadow-md flex items-center justify-center text-white text-xs font-bold">
+        📌
+      </div>
+<!-- BEGIN: About Me Section -->
+<section class="max-w-3xl mx-auto text-center pt-2 pb-10" data-purpose="about-me-section">
+<!-- Playful Section Heading with Doodles -->
+<div class="inline-flex items-center justify-center gap-3 mb-6 relative">
+<!-- Hand-drawn curly decorative doodle -->
+<svg class="w-8 h-8 text-brand-purple -scale-x-100" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 50 50">
+<path d="M10 25 Q 25 5 40 25 T 45 40" stroke-linecap="round"></path>
+</svg>
+<h2 class="font-fun font-black text-3xl sm:text-4xl text-brand-purple tracking-wide">
+            Tentang Saya
+          </h2>
+<!-- Hand-drawn curly decorative doodle -->
+<svg class="w-8 h-8 text-brand-purple" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 50 50">
+<path d="M10 25 Q 25 5 40 25 T 45 40" stroke-linecap="round"></path>
+</svg>
+</div>
+<!-- About Text (Verbatim Indonesian Request) -->
+<div class="relative bg-brand-lightPurple/40 rounded-2xl p-6 sm:p-8 border-2 border-dashed border-brand-purple/40 text-left sm:text-center">
+<p class="font-hand text-lg sm:text-xl md:text-2xl text-brand-charcoal leading-relaxed font-bold">
+            "Halo, perkenalkan saya <button id="open-photo-modal" class="text-brand-purple underline decoration-wavy decoration-yellow-400 font-bold hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-0 p-0 text-inherit font-inherit inline align-baseline animate-kelap-kelip">Nadiya Mutiara Isnaini</button>, siswa kelas <span class="bg-yellow-200 px-2 py-0.5 rounded-md">XII DKV 3</span>. Saya merupakan pelajar jurusan Desain Komunikasi Visual (DKV) yang memiliki minat dalam bidang desain grafis, branding, dan pembuatan konten visual. Saya senang mengembangkan ide kreatif menjadi sebuah desain yang menarik, komunikatif, dan sesuai dengan kebutuhan."
+          </p>
+</div>
+</section>
+<!-- END: About Me Section -->
+<!-- Divider with hand-drawn star -->
+<div class="relative flex py-4 items-center">
+<div class="flex-grow border-t-2 border-dashed border-gray-300"></div>
+<span class="flex-shrink mx-4 text-brand-purple">
+<svg class="w-6 h-6 animate-spin text-brand-purple" fill="currentColor" style="animation-duration: 8s;" viewbox="0 0 24 24">
+<path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"></path>
+</svg>
+</span>
+<div class="flex-grow border-t-2 border-dashed border-gray-300"></div>
+</div>
+<!-- BEGIN: Three Columns Section (Software, Experience, Contacts) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-6 pt-6" data-purpose="three-column-details">
+<!-- Column 1: Software / Keahlian Software -->
+<div class="bg-[#FAF9FE] rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-purple transition-colors flex flex-col justify-between" data-purpose="software-skills">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="text-2xl">💻</span>
+<h3 class="font-fun font-bold text-xl text-brand-charcoal">Keahlian Software</h3>
+</div>
+<p class="font-hand font-bold text-sm text-gray-500 mb-6">Tools &amp; aplikasi kreatif yang sering saya gunakan dalam berkarya:</p>
+<!-- Software Badges Grid -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Adobe Illustrator -->
+<div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-gray-200 shadow-sm hover:scale-105 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-[#330000] border-2 border-[#FF9A00] flex items-center justify-center font-fun font-black text-[#FF9A00] text-sm">
+                  Ai
+                </div>
+<div class="text-left">
+<div class="font-fun font-bold text-xs leading-none text-brand-charcoal">Illustrator</div>
+<span class="text-[10px] text-gray-400 font-hand font-bold">Vector &amp; Logo</span>
+</div>
+</div>
+<!-- Adobe Photoshop -->
+<div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-gray-200 shadow-sm hover:scale-105 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-[#001E36] border-2 border-[#31A8FF] flex items-center justify-center font-fun font-black text-[#31A8FF] text-sm">
+                  Ps
+                </div>
+<div class="text-left">
+<div class="font-fun font-bold text-xs leading-none text-brand-charcoal">Photoshop</div>
+<span class="text-[10px] text-gray-400 font-hand font-bold">Raster &amp; Edit</span>
+</div>
+</div>
+<!-- Canva -->
+<div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-gray-200 shadow-sm hover:scale-105 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-[#00C4CC] to-[#7D2AE8] flex items-center justify-center font-fun font-black text-white text-base">
+                  C
+                </div>
+<div class="text-left">
+<div class="font-fun font-bold text-xs leading-none text-brand-charcoal">Canva</div>
+<span class="text-[10px] text-gray-400 font-hand font-bold">Quick Layout</span>
+</div>
+</div>
+<!-- Blender -->
+<div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-gray-200 shadow-sm hover:scale-105 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-[#EA7600] border-2 border-orange-400 flex items-center justify-center font-fun font-black text-white text-sm">
+                  Bl
+                </div>
+<div class="text-left">
+<div class="font-fun font-bold text-xs leading-none text-brand-charcoal">Blender</div>
+<span class="text-[10px] text-gray-400 font-hand font-bold">3D Modeling</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-200 text-center">
+<span class="font-hand text-xs font-bold text-brand-purple">✨ Terbuka mempelajari tools baru</span>
+</div>
+</div>
+<!-- Column 2: Experience / Pengalaman -->
+<div class="bg-[#FAF9FE] rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-purple transition-colors flex flex-col justify-between" data-purpose="work-experience">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="text-2xl">🎓</span>
+<h3 class="font-fun font-bold text-xl text-brand-charcoal">Pengalaman</h3>
+</div>
+<p class="font-hand font-bold text-sm text-gray-500 mb-4">Riwayat praktik dan pengalaman kerja lapangan:</p>
+<!-- PKL Card Item -->
+<div class="bg-white rounded-xl p-4 border-l-4 border-brand-purple shadow-sm">
+<div class="inline-block bg-brand-lightPurple text-brand-purple text-[11px] font-fun font-bold px-2 py-0.5 rounded-full mb-2">
+                Praktik Kerja Lapangan (PKL)
+              </div>
+<p class="font-body text-xs sm:text-sm text-brand-charcoal font-semibold leading-snug">
+                Praktik Kerja Lapangan di kantor Tata Usaha Fakultas Desain Kreatif dan Bisnis Digital, Institut Teknologi Sepuluh Nopember.
+              </p>
+<div class="mt-3 flex items-center gap-2 text-[11px] font-hand font-bold text-gray-500">
+<svg class="w-4 h-4 text-brand-purple" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>FDKBD - ITS Surabaya</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-200">
+<span class="inline-flex items-center gap-1 font-hand font-bold text-xs text-green-700 bg-green-50 px-2.5 py-1 rounded-lg">
+              ✓ Pengalaman Administrasi &amp; Kreatif
+            </span>
+</div>
+</div>
+<!-- Column 3: Contacts / Kontak -->
+<div class="bg-[#FAF9FE] rounded-2xl p-6 border-2 border-gray-200 hover:border-brand-purple transition-colors flex flex-col justify-between" data-purpose="contact-details">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="text-2xl">📬</span>
+<h3 class="font-fun font-bold text-xl text-brand-charcoal">Kontak</h3>
+</div>
+<p class="font-hand font-bold text-sm text-gray-500 mb-4">Silakan hubungi saya untuk kolaborasi atau proyek desain:</p>
+<ul class="space-y-3">
+<!-- Email -->
+<li>
+<a class="flex items-center gap-3 p-2 rounded-xl bg-white border border-gray-200 hover:border-brand-purple hover:bg-brand-lightPurple/30 transition-all group" href="mailto:nadyamutiara1910@gmail.com">
+<div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+</svg>
+</div>
+<div class="overflow-hidden">
+<div class="text-[10px] uppercase font-fun font-bold text-gray-400">Email</div>
+<div class="font-body text-xs font-bold text-brand-charcoal truncate">nadyamutiara1910@gmail.com</div>
+</div>
+</a>
+</li>
+<!-- WhatsApp -->
+<li>
+<a class="flex items-center gap-3 p-2 rounded-xl bg-white border border-gray-200 hover:border-green-500 hover:bg-green-50/50 transition-all group" href="https://wa.me/6282131583366" rel="noopener noreferrer" target="_blank">
+<div class="w-8 h-8 rounded-lg bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"></path>
+</svg>
+</div>
+<div class="overflow-hidden">
+<div class="text-[10px] uppercase font-fun font-bold text-gray-400">WhatsApp</div>
+<div class="font-body text-xs font-bold text-brand-charcoal truncate">082131583366</div>
+</div>
+</a>
+</li>
+<!-- Instagram -->
+<li>
+<a class="flex items-center gap-3 p-2 rounded-xl bg-white border border-gray-200 hover:border-pink-500 hover:bg-pink-50/50 transition-all group" href="https://instagram.com/ndyymtr_" rel="noopener noreferrer" target="_blank">
+<div class="w-8 h-8 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+</svg>
+</div>
+<div class="overflow-hidden">
+<div class="text-[10px] uppercase font-fun font-bold text-gray-400">Instagram</div>
+<div class="font-body text-xs font-bold text-brand-charcoal truncate">@ndyymtr_</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-4 pt-3 border-t border-gray-200">
+<span class="font-hand font-bold text-xs text-gray-500">📍 Surabaya &amp; Jawa Timur</span>
+</div>
+</div>
+</section>
+<!-- END: Three Columns Section -->
+</main>
+<!-- END: Main Content White Card -->
+</div>
+<!-- BEGIN: Bottom Portfolio Gallery (Torn Paper Ripped Edge Transition) -->
+<section class="relative bg-brand-purple pt-16 pb-24 text-white overflow-hidden" data-purpose="portfolio-showcase">
+<!-- Torn Paper SVG Divider on Top -->
+<div class="absolute top-0 left-0 right-0 -translate-y-[98%] w-full overflow-hidden leading-none pointer-events-none torn-top-edge">
+<svg class="w-full h-12 sm:h-20 text-brand-purple preserve-3d" preserveaspectratio="none" viewbox="0 0 1200 120">
+<path d="M0,0 L0,85 Q30,60 65,95 T130,70 T200,90 T270,60 T350,105 T430,75 T510,95 T580,65 T660,100 T730,70 T820,95 T900,60 T980,95 T1060,75 T1140,90 T1200,65 L1200,120 L0,120 Z" fill="currentColor"></path>
+</svg>
+</div>
+<!-- Background Doodle Stars in violet section -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none opacity-20">
+<span class="absolute top-10 left-1/4 text-6xl font-hand">✦</span>
+<span class="absolute top-32 right-12 text-7xl font-hand">✧</span>
+<span class="absolute bottom-10 left-10 text-5xl font-hand">★</span>
+</div>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<!-- Section Title & Subtitle -->
+<div class="text-center mb-12">
+<div class="inline-block bg-brand-darkPurple/80 px-4 py-1 rounded-full text-xs font-fun font-bold uppercase tracking-widest text-yellow-300 mb-2 border border-yellow-300/30">
+          Selected Creative Works
+        </div>
+<h2 class="font-fun font-black text-3xl sm:text-5xl text-white tracking-wide">
+          Galeri Portofolio Desain
+        </h2>
+<p class="font-hand font-bold text-lg sm:text-xl text-sky-100 mt-2 max-w-2xl mx-auto">
+          Kumpulan eksplorasi karya visual, poster promosi, identitas brand, hingga desain editorial majalah.
+        </p>
+</div>
+<!-- Portfolio Grid (5 Items as in reference sketch) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-end">
+<!-- ITEM 1: 3D Dorr -->
+<div class="relative group" data-purpose="showcase-item-1">
+<!-- Doodle Number 1 -->
+<div class="doodle-number text-7xl sm:text-8xl font-black absolute -top-12 left-2 z-20 pointer-events-none opacity-80 group-hover:scale-110 transition-transform">
+            1
+          </div>
+<button id="open-dorr-modal" class="w-full text-left block bg-white rounded-2xl overflow-hidden border-2 border-brand-charcoal sticker-shadow text-brand-charcoal transform group-hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+<!-- Mockup Artwork Container -->
+<div class="h-64 sm:h-72 bg-gradient-to-b from-indigo-900 via-purple-900 to-slate-900 p-3 flex flex-col justify-between relative overflow-hidden text-white">
+<div class="flex justify-between items-center text-[10px] font-fun font-bold tracking-widest bg-white/20 backdrop-blur-sm px-2 py-1 rounded">
+<span>3D RENDER</span>
+<span>PREVIEW</span>
+</div>
+<div class="text-center my-auto">
+<div class="w-16 h-16 mx-auto rounded-2xl border-2 border-orange-400 bg-orange-500/20 flex items-center justify-center mb-2 shadow-lg backdrop-blur-md rotate-6">
+<span class="text-3xl animate-bounce">🧊</span>
+</div>
+<h4 class="font-fun font-black text-xl leading-tight uppercase tracking-wider text-orange-300 drop-shadow-md">3D RENDER</h4>
+<p class="text-[10px] font-hand font-bold text-indigo-200 mt-1">Klik untuk lihat foto</p>
+</div>
+<div class="bg-orange-500 text-white rounded-lg p-1.5 text-center text-[9px] font-bold font-fun uppercase tracking-wider shadow-sm">
+                🔍 Lihat Foto 3D
+              </div>
+</div>
+<!-- Card Caption -->
+<div class="p-3 bg-white">
+<span class="text-[10px] font-fun font-bold text-orange-600 uppercase tracking-wider block">3D Modeling</span>
+<h5 class="font-fun font-bold text-sm text-brand-charcoal truncate">3D</h5>
+</div>
+</button>
+</div>
+<!-- ITEM 2: Stilasi (.png) -->
+<div class="relative group" data-purpose="showcase-item-2">
+<!-- Doodle Number 2 -->
+<div class="doodle-number text-7xl sm:text-8xl font-black absolute -top-12 left-2 z-20 pointer-events-none opacity-80 group-hover:scale-110 transition-transform">
+            2
+          </div>
+<button id="open-stilasi-modal" class="w-full text-left block bg-white rounded-2xl overflow-hidden border-2 border-brand-charcoal sticker-shadow text-brand-charcoal transform group-hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+<!-- Mockup Artwork Container -->
+<div class="h-64 sm:h-72 bg-gradient-to-b from-[#330000] via-[#520000] to-[#1A0000] p-3 flex flex-col justify-between relative overflow-hidden text-white">
+<div class="flex justify-between items-center text-[10px] font-fun font-bold tracking-widest bg-white/20 backdrop-blur-sm px-2 py-1 rounded">
+<span>VECTOR ART</span>
+<span>PREVIEW</span>
+</div>
+<div class="text-center my-auto">
+<div class="w-16 h-16 mx-auto rounded-2xl border-2 border-[#FF9A00] bg-[#330000] flex items-center justify-center mb-2 shadow-lg font-fun font-black text-[#FF9A00] text-2xl rotate-3">
+                  Ai
+                </div>
+<h4 class="font-fun font-black text-xl leading-tight uppercase tracking-wider text-[#FF9A00] drop-shadow-md">STILASI</h4>
+<p class="text-[10px] font-hand font-bold text-orange-200 mt-1">Klik untuk lihat foto</p>
+</div>
+<div class="bg-[#FF9A00] text-[#330000] rounded-lg p-1.5 text-center text-[9px] font-black font-fun uppercase tracking-wider shadow-sm">
+                🔍 Lihat Foto Stilasi
+              </div>
+</div>
+<!-- Card Caption -->
+<div class="p-3 bg-white">
+<span class="text-[10px] font-fun font-bold text-[#FF9A00] uppercase tracking-wider block">Vector &amp; Illustration</span>
+<h5 class="font-fun font-bold text-sm text-brand-charcoal truncate">Stilasi</h5>
+</div>
+</button>
+</div>
+<!-- ITEM 3: Desain Bumper -->
+<div class="relative group" data-purpose="showcase-item-3">
+<!-- Doodle Number 3 -->
+<div class="doodle-number text-7xl sm:text-8xl font-black absolute -top-12 left-2 z-20 pointer-events-none opacity-80 group-hover:scale-110 transition-transform">
+            3
+          </div>
+<a href="https://canva.link/fdzleoc067y0nfq" target="_blank" rel="noopener noreferrer" class="block bg-white rounded-2xl overflow-hidden border-2 border-brand-charcoal sticker-shadow text-brand-charcoal transform group-hover:-translate-y-2 transition-all duration-300">
+<!-- Mockup Artwork Container -->
+<div class="h-64 sm:h-72 bg-gradient-to-b from-sky-500 via-blue-600 to-indigo-700 p-3 flex flex-col justify-between relative overflow-hidden text-white">
+<div class="flex justify-between items-center text-[10px] font-fun font-bold tracking-widest bg-white/20 backdrop-blur-sm px-2 py-1 rounded">
+<span>MOTION</span>
+<span>BUMPER</span>
+</div>
+<div class="text-center my-auto">
+<div class="w-16 h-16 mx-auto rounded-full bg-white/20 backdrop-blur-md border-2 border-white/80 flex items-center justify-center mb-2 shadow-lg">
+<span class="text-3xl animate-pulse">🎬</span>
+</div>
+<h4 class="font-fun font-black text-xl leading-tight uppercase tracking-wider drop-shadow-md">DESAIN BUMPER</h4>
+<p class="text-[10px] font-hand font-bold text-sky-200 mt-1">Animation &amp; Intro Video</p>
+</div>
+<div class="bg-yellow-400 text-brand-charcoal rounded-lg p-1.5 text-center text-[10px] font-black font-fun uppercase tracking-wider shadow-sm">
+                ▶ Tonton di Canva
+              </div>
+</div>
+<!-- Card Caption -->
+<div class="p-3 bg-white">
+<span class="text-[10px] font-fun font-bold text-sky-600 uppercase tracking-wider block">Motion Graphic</span>
+<h5 class="font-fun font-bold text-sm text-brand-charcoal truncate">Desain Bumper</h5>
+</div>
+</a>
+</div>
+<!-- ITEM 4: Karakter (Ace & Karakter) -->
+<div class="relative group" data-purpose="showcase-item-4">
+<!-- Doodle Number 4 -->
+<div class="doodle-number text-7xl sm:text-8xl font-black absolute -top-12 left-2 z-20 pointer-events-none opacity-80 group-hover:scale-110 transition-transform">
+            4
+          </div>
+<button id="open-ace-modal" class="w-full text-left block bg-white rounded-2xl overflow-hidden border-2 border-brand-charcoal sticker-shadow text-brand-charcoal transform group-hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+<!-- Mockup Artwork Container -->
+<div class="h-64 sm:h-72 bg-gradient-to-b from-[#1A0033] via-[#330066] to-[#0A001A] p-3 flex flex-col justify-between relative overflow-hidden text-white">
+<div class="flex justify-between items-center text-[10px] font-fun font-bold tracking-widest bg-white/20 backdrop-blur-sm px-2 py-1 rounded">
+<span>CHARACTER</span>
+<span>PREVIEW (2 SLIDES)</span>
+</div>
+<div class="text-center my-auto">
+<div class="w-16 h-16 mx-auto rounded-2xl border-2 border-[#FF9A00] bg-[#330000] flex items-center justify-center mb-2 shadow-lg font-fun font-black text-[#FF9A00] text-2xl -rotate-3">
+                  Ai
+                </div>
+<h4 class="font-fun font-black text-xl leading-tight uppercase tracking-wider text-[#FF9A00] drop-shadow-md">KARAKTER</h4>
+<p class="text-[10px] font-hand font-bold text-purple-200 mt-1">Klik untuk lihat 2 slide foto</p>
+</div>
+<div class="bg-[#FF9A00] text-[#330000] rounded-lg p-1.5 text-center text-[9px] font-black font-fun uppercase tracking-wider shadow-sm">
+                🔍 Lihat Galeri Karakter
+              </div>
+</div>
+<!-- Card Caption -->
+<div class="p-3 bg-white">
+<span class="text-[10px] font-fun font-bold text-[#FF9A00] uppercase tracking-wider block">Vector Character</span>
+<h5 class="font-fun font-bold text-sm text-brand-charcoal truncate">Karakter</h5>
+</div>
+</button>
+</div>
+<!-- ITEM 5: Poster (Mewarnaii & Poster Produk) -->
+<div class="relative group" data-purpose="showcase-item-5">
+<!-- Doodle Number 5 -->
+<div class="doodle-number doodle-number-alt text-7xl sm:text-8xl font-black absolute -top-12 left-2 z-20 pointer-events-none opacity-90 group-hover:scale-110 transition-transform">
+            5
+          </div>
+<button id="open-poster-modal" class="w-full text-left block bg-white rounded-2xl overflow-hidden border-2 border-brand-charcoal sticker-shadow text-brand-charcoal transform group-hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+<!-- Mockup Artwork Container -->
+<div class="h-64 sm:h-72 bg-gradient-to-b from-[#001E36] via-[#003366] to-[#000F1A] p-3 flex flex-col justify-between relative overflow-hidden text-white">
+<div class="flex justify-between items-center text-[10px] font-fun font-bold tracking-widest bg-white/20 backdrop-blur-sm px-2 py-1 rounded">
+<span>POSTER</span>
+<span>PREVIEW (2 SLIDES)</span>
+</div>
+<div class="text-center my-auto">
+<div class="w-16 h-16 mx-auto rounded-2xl border-2 border-[#31A8FF] bg-[#001E36] flex items-center justify-center mb-2 shadow-lg font-fun font-black text-[#31A8FF] text-2xl rotate-3">
+                  Ps
+                </div>
+<h4 class="font-fun font-black text-xl leading-tight uppercase tracking-wider text-[#31A8FF] drop-shadow-md">POSTER</h4>
+<p class="text-[10px] font-hand font-bold text-sky-200 mt-1">Klik untuk lihat 2 slide foto</p>
+</div>
+<div class="bg-[#31A8FF] text-white rounded-lg p-1.5 text-center text-[9px] font-black font-fun uppercase tracking-wider shadow-sm">
+                🔍 Lihat Galeri Poster
+              </div>
+</div>
+<!-- Card Caption -->
+<div class="p-3 bg-white">
+<span class="text-[10px] font-fun font-bold text-[#31A8FF] uppercase tracking-wider block">Poster Design</span>
+<h5 class="font-fun font-bold text-sm text-brand-charcoal truncate">Poster</h5>
+</div>
+</button>
+</div>
+</div>
+<!-- Bottom Note / Creative Quote -->
+<div class="mt-14 text-center">
+<div class="inline-block bg-brand-darkPurple/60 border border-white/20 rounded-2xl px-6 py-4 backdrop-blur-sm max-w-xl">
+<p class="font-hand font-bold text-base sm:text-lg text-yellow-300">
+            "Desain yang baik bukan hanya tentang apa yang terlihat, tetapi tentang bagaimana perasaan orang saat melihatnya dan memecahkan masalah dengan kreatif."
+          </p>
+<span class="block mt-2 font-fun text-xs text-sky-100 uppercase tracking-wider">
+            Nadiya Mutiara Isnaini • DKV Portfolio
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Bottom Portfolio Gallery -->
+<!-- BEGIN: Simple Footer -->
+<footer class="bg-brand-charcoal text-gray-400 py-8 text-center text-xs font-hand" data-purpose="website-footer">
+<div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="font-fun text-sm text-white font-bold">
+        NADIYA MUTIARA ISNAINI
+</div>
+<div class="text-gray-300">
+        Pelajar Desain Komunikasi Visual (DKV) • Portfolio Pribadi
+      </div>
+<div class="flex items-center gap-4 text-xs font-bold font-body">
+<a class="hover:text-white transition-colors" href="mailto:nadyamutiara1910@gmail.com">Email</a>
+<a class="hover:text-white transition-colors" href="https://wa.me/6282131583366">WhatsApp</a>
+<a class="hover:text-white transition-colors" href="https://instagram.com/ndyymtr_">Instagram</a>
+</div>
+</div>
+</footer>
+<!-- END: Simple Footer -->
+<!-- END: Simple Footer -->
+<!-- Photo Modal Popup -->
+<div id="photo-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+  <div class="relative bg-white rounded-3xl p-4 max-w-md w-full shadow-2xl border-4 border-brand-charcoal transform scale-95 transition-transform duration-300" id="modal-content">
+    <button id="close-modal" class="absolute -top-4 -right-4 w-10 h-10 bg-red-500 text-white rounded-full border-2 border-brand-charcoal font-bold text-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer">×</button>
+    <div class="text-center mb-3 font-fun font-bold text-brand-charcoal text-lg">📸 Nadiya Mutiara Isnaini</div>
+    <div class="rounded-2xl overflow-hidden border-2 border-gray-200 shadow-inner bg-gray-100 flex items-center justify-center">
+      <img src="nadia jpg.jpeg" alt="Nadiya Mutiara" class="w-full h-auto object-cover max-h-[60vh] rounded-xl">
+    </div>
+    <p class="mt-3 text-xs font-hand text-center text-gray-500 font-bold">Siswa XII DKV 3 • Desain Komunikasi Visual</p>
+  </div>
+</div>
+<!-- Dorr & Udanglusyu Slider Modal -->
+<div id="dorr-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+  <div class="relative bg-white rounded-3xl p-4 max-w-2xl w-full shadow-2xl border-4 border-brand-charcoal transform scale-95 transition-transform duration-300" id="dorr-modal-content">
+    <button id="close-dorr-modal" class="absolute -top-4 -right-4 w-10 h-10 bg-red-500 text-white rounded-full border-2 border-brand-charcoal font-bold text-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer z-20">×</button>
+    <div class="text-center mb-3 font-fun font-bold text-brand-charcoal text-xl flex items-center justify-center gap-2">
+      <span>🧊 3D Render Gallery</span>
+      <span id="slide-indicator" class="text-xs font-hand bg-brand-lightPurple text-brand-purple px-2 py-0.5 rounded-full">1 / 2</span>
+    </div>
+    
+    <!-- Slider Container -->
+    <div class="relative rounded-2xl overflow-hidden border-2 border-gray-200 shadow-inner bg-gray-100 flex items-center justify-center min-h-[300px] max-h-[65vh]">
+      <!-- Slide 1: dorrr.png -->
+      <div class="slide-item w-full flex items-center justify-center p-2">
+        <img src="dorrr.png" alt="Dorr 3D" class="w-full h-auto object-contain max-h-[60vh] rounded-xl">
+      </div>
+      <!-- Slide 2: udanglusyuu.png -->
+      <div class="slide-item w-full flex items-center justify-center p-2 hidden">
+        <img src="udanglusyuu.png" alt="Udanglusyu 3D" class="w-full h-auto object-contain max-h-[60vh] rounded-xl">
+      </div>
+
+      <!-- Prev Arrow -->
+      <button id="prev-slide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-charcoal w-9 h-9 rounded-full border-2 border-brand-charcoal font-bold flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer z-10">❮</button>
+      <!-- Next Arrow -->
+      <button id="next-slide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-charcoal w-9 h-9 rounded-full border-2 border-brand-charcoal font-bold flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer z-10">❯</button>
+    </div>
+
+    <!-- Thumbnail Dots -->
+    <div class="flex justify-center gap-2 mt-3">
+      <button class="dot-btn w-3 h-3 rounded-full bg-brand-purple transition-all cursor-pointer" data-index="0"></button>
+      <button class="dot-btn w-3 h-3 rounded-full bg-gray-300 transition-all cursor-pointer" data-index="1"></button>
+    </div>
+
+    <p class="mt-2 text-xs font-hand text-center text-gray-500 font-bold">Gunakan tombol panah atau titik di bawah untuk melihat foto selanjutnya</p>
+  </div>
+</div>
+<!-- Stilasi Photo Modal Popup -->
+<div id="stilasi-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+  <div class="relative bg-white rounded-3xl p-4 max-w-2xl w-full shadow-2xl border-4 border-brand-charcoal transform scale-95 transition-transform duration-300" id="stilasi-modal-content">
+    <button id="close-stilasi-modal" class="absolute -top-4 -right-4 w-10 h-10 bg-red-500 text-white rounded-full border-2 border-brand-charcoal font-bold text-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer">×</button>
+    <div class="text-center mb-3 font-fun font-bold text-brand-charcoal text-xl">🎨 Vector Art - Stilasi</div>
+    <div class="rounded-2xl overflow-hidden border-2 border-gray-200 shadow-inner bg-gray-100 flex items-center justify-center">
+      <img src="stilasi.png" alt="Stilasi Vector" class="w-full h-auto object-contain max-h-[70vh] rounded-xl">
+    </div>
+    <p class="mt-3 text-xs font-hand text-center text-gray-500 font-bold">Adobe Illustrator Artwork</p>
+  </div>
+</div>
+<!-- Ace & Karakter 2-Slide Slider Modal -->
+<div id="ace-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+  <div class="relative bg-white rounded-3xl p-4 max-w-2xl w-full shadow-2xl border-4 border-brand-charcoal transform scale-95 transition-transform duration-300" id="ace-modal-content">
+    <button id="close-ace-modal" class="absolute -top-4 -right-4 w-10 h-10 bg-red-500 text-white rounded-full border-2 border-brand-charcoal font-bold text-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer z-20">×</button>
+    <div class="text-center mb-3 font-fun font-bold text-brand-charcoal text-xl flex items-center justify-center gap-2">
+      <span>👤 Character Art Gallery</span>
+      <span id="ace-slide-indicator" class="text-xs font-hand bg-brand-lightPurple text-brand-purple px-2 py-0.5 rounded-full">1 / 2</span>
+    </div>
+    
+    <!-- Slider Container -->
+    <div class="relative rounded-2xl overflow-hidden border-2 border-gray-200 shadow-inner bg-gray-100 flex items-center justify-center min-h-[300px] max-h-[65vh]">
+      <!-- Slide 1: ace.jpg -->
+      <div class="ace-slide-item w-full flex items-center justify-center p-2">
+        <img src="ace.jpg" alt="Ace Character" class="w-full h-auto object-contain max-h-[60vh] rounded-xl">
+      </div>
+      <!-- Slide 2: KARAKTERR.jpg -->
+      <div class="ace-slide-item w-full flex items-center justify-center p-2 hidden">
+        <img src="KARAKTERR.jpg" alt="Karakter Art" class="w-full h-auto object-contain max-h-[60vh] rounded-xl">
+      </div>
+
+      <!-- Prev Arrow -->
+      <button id="ace-prev-slide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-charcoal w-9 h-9 rounded-full border-2 border-brand-charcoal font-bold flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer z-10">❮</button>
+      <!-- Next Arrow -->
+      <button id="ace-next-slide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-charcoal w-9 h-9 rounded-full border-2 border-brand-charcoal font-bold flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer z-10">❯</button>
+    </div>
+
+    <!-- Thumbnail Dots -->
+    <div class="flex justify-center gap-2 mt-3">
+      <button class="ace-dot-btn w-3 h-3 rounded-full bg-brand-purple transition-all cursor-pointer" data-index="0"></button>
+      <button class="ace-dot-btn w-3 h-3 rounded-full bg-gray-300 transition-all cursor-pointer" data-index="1"></button>
+    </div>
+
+    <p class="mt-2 text-xs font-hand text-center text-gray-500 font-bold">Gunakan tombol panah atau titik di bawah untuk melihat foto selanjutnya</p>
+  </div>
+</div>
+<!-- Mewarnaii & Poster Produk 2-Slide Slider Modal -->
+<div id="poster-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+  <div class="relative bg-white rounded-3xl p-4 max-w-2xl w-full shadow-2xl border-4 border-brand-charcoal transform scale-95 transition-transform duration-300" id="poster-modal-content">
+    <button id="close-poster-modal" class="absolute -top-4 -right-4 w-10 h-10 bg-red-500 text-white rounded-full border-2 border-brand-charcoal font-bold text-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer z-20">×</button>
+    <div class="text-center mb-3 font-fun font-bold text-brand-charcoal text-xl flex items-center justify-center gap-2">
+      <span>🖼️ Poster &amp; Coloring Gallery</span>
+      <span id="poster-slide-indicator" class="text-xs font-hand bg-brand-lightPurple text-brand-purple px-2 py-0.5 rounded-full">1 / 2</span>
+    </div>
+    
+    <!-- Slider Container -->
+    <div class="relative rounded-2xl overflow-hidden border-2 border-gray-200 shadow-inner bg-gray-100 flex items-center justify-center min-h-[300px] max-h-[65vh]">
+      <!-- Slide 1: mewarnaii.jpg -->
+      <div class="poster-slide-item w-full flex items-center justify-center p-2">
+        <img src="mewarnaii.jpg" alt="Mewarnaii Artwork" class="w-full h-auto object-contain max-h-[60vh] rounded-xl">
+      </div>
+      <!-- Slide 2: poster produk.png -->
+      <div class="poster-slide-item w-full flex items-center justify-center p-2 hidden">
+        <img src="poster produk.png" alt="Poster Produk" class="w-full h-auto object-contain max-h-[60vh] rounded-xl">
+      </div>
+
+      <!-- Prev Arrow -->
+      <button id="poster-prev-slide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-charcoal w-9 h-9 rounded-full border-2 border-brand-charcoal font-bold flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer z-10">❮</button>
+      <!-- Next Arrow -->
+      <button id="poster-next-slide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-charcoal w-9 h-9 rounded-full border-2 border-brand-charcoal font-bold flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer z-10">❯</button>
+    </div>
+
+    <!-- Thumbnail Dots -->
+    <div class="flex justify-center gap-2 mt-3">
+      <button class="poster-dot-btn w-3 h-3 rounded-full bg-brand-purple transition-all cursor-pointer" data-index="0"></button>
+      <button class="poster-dot-btn w-3 h-3 rounded-full bg-gray-300 transition-all cursor-pointer" data-index="1"></button>
+    </div>
+
+    <p class="mt-2 text-xs font-hand text-center text-gray-500 font-bold">Gunakan tombol panah atau titik di bawah untuk melihat foto selanjutnya</p>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Elements to animate on scroll
+    const targets = document.querySelectorAll('main, section > div > div, footer, [data-purpose="three-column-details"] > div');
+    targets.forEach((el, index) => {
+      el.classList.add('reveal-on-scroll');
+      observer.observe(el);
+    });
+
+    // Modal logic for Nadiya Mutiara photo
+    const openBtn = document.getElementById('open-photo-modal');
+    const modal = document.getElementById('photo-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const modalContent = document.getElementById('modal-content');
+
+    if (openBtn && modal) {
+      openBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modalContent.classList.remove('scale-95');
+          modalContent.classList.add('scale-100');
+        }, 10);
+      });
+
+      const closeModalFunc = () => {
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 200);
+      };
+
+      closeBtn.addEventListener('click', closeModalFunc);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModalFunc();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModalFunc();
+        }
+      });
+    }
+
+    // Modal logic for Dorr 3D photo
+    const openDorrBtn = document.getElementById('open-dorr-modal');
+    const dorrModal = document.getElementById('dorr-modal');
+    const closeDorrBtn = document.getElementById('close-dorr-modal');
+    const dorrModalContent = document.getElementById('dorr-modal-content');
+
+    if (openDorrBtn && dorrModal) {
+      openDorrBtn.addEventListener('click', () => {
+        dorrModal.classList.remove('hidden');
+        setTimeout(() => {
+          dorrModalContent.classList.remove('scale-95');
+          dorrModalContent.classList.add('scale-100');
+        }, 10);
+      });
+
+      const closeDorrFunc = () => {
+        dorrModalContent.classList.remove('scale-100');
+        dorrModalContent.classList.add('scale-95');
+        setTimeout(() => {
+          dorrModal.classList.add('hidden');
+        }, 200);
+      };
+
+      closeDorrBtn.addEventListener('click', closeDorrFunc);
+      dorrModal.addEventListener('click', (e) => {
+        if (e.target === dorrModal) {
+          closeDorrFunc();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeDorrFunc();
+        }
+      });
+
+      let currentSlide = 0;
+      const slides = dorrModal.querySelectorAll('.slide-item');
+      const dots = dorrModal.querySelectorAll('.dot-btn');
+      const slideIndicator = document.getElementById('slide-indicator');
+      const prevBtn = document.getElementById('prev-slide');
+      const nextBtn = document.getElementById('next-slide');
+
+      function showSlide(n) {
+        slides.forEach((slide, idx) => {
+          if (idx === n) {
+            slide.classList.remove('hidden');
+          } else {
+            slide.classList.add('hidden');
+          }
+        });
+        dots.forEach((dot, idx) => {
+          if (idx === n) {
+            dot.classList.remove('bg-gray-300');
+            dot.classList.add('bg-brand-purple');
+          } else {
+            dot.classList.remove('bg-brand-purple');
+            dot.classList.add('bg-gray-300');
+          }
+        });
+        if (slideIndicator) {
+          slideIndicator.textContent = `${n + 1} / ${slides.length}`;
+        }
+        currentSlide = n;
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let n = currentSlide - 1;
+          if (n < 0) n = slides.length - 1;
+          showSlide(n);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let n = currentSlide + 1;
+          if (n >= slides.length) n = 0;
+          showSlide(n);
+        });
+      }
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showSlide(idx);
+        });
+      });
+    }
+
+    // Modal logic for Stilasi photo
+    const openStilasiBtn = document.getElementById('open-stilasi-modal');
+    const stilasiModal = document.getElementById('stilasi-modal');
+    const closeStilasiBtn = document.getElementById('close-stilasi-modal');
+    const stilasiModalContent = document.getElementById('stilasi-modal-content');
+
+    if (openStilasiBtn && stilasiModal) {
+      openStilasiBtn.addEventListener('click', () => {
+        stilasiModal.classList.remove('hidden');
+        setTimeout(() => {
+          stilasiModalContent.classList.remove('scale-95');
+          stilasiModalContent.classList.add('scale-100');
+        }, 10);
+      });
+
+      const closeStilasiFunc = () => {
+        stilasiModalContent.classList.remove('scale-100');
+        stilasiModalContent.classList.add('scale-95');
+        setTimeout(() => {
+          stilasiModal.classList.add('hidden');
+        }, 200);
+      };
+
+      closeStilasiBtn.addEventListener('click', closeStilasiFunc);
+      stilasiModal.addEventListener('click', (e) => {
+        if (e.target === stilasiModal) {
+          closeStilasiFunc();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeStilasiFunc();
+        }
+      });
+    }
+
+    // Modal logic for Ace & Karakter slider photo
+    const openAceBtn = document.getElementById('open-ace-modal');
+    const aceModal = document.getElementById('ace-modal');
+    const closeAceBtn = document.getElementById('close-ace-modal');
+    const aceModalContent = document.getElementById('ace-modal-content');
+
+    if (openAceBtn && aceModal) {
+      openAceBtn.addEventListener('click', () => {
+        aceModal.classList.remove('hidden');
+        setTimeout(() => {
+          aceModalContent.classList.remove('scale-95');
+          aceModalContent.classList.add('scale-100');
+        }, 10);
+      });
+
+      const closeAceFunc = () => {
+        aceModalContent.classList.remove('scale-100');
+        aceModalContent.classList.add('scale-95');
+        setTimeout(() => {
+          aceModal.classList.add('hidden');
+        }, 200);
+      };
+
+      closeAceBtn.addEventListener('click', closeAceFunc);
+      aceModal.addEventListener('click', (e) => {
+        if (e.target === aceModal) {
+          closeAceFunc();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAceFunc();
+        }
+      });
+
+      let currentAceSlide = 0;
+      const aceSlides = aceModal.querySelectorAll('.ace-slide-item');
+      const aceDots = aceModal.querySelectorAll('.ace-dot-btn');
+      const aceSlideIndicator = document.getElementById('ace-slide-indicator');
+      const acePrevBtn = document.getElementById('ace-prev-slide');
+      const aceNextBtn = document.getElementById('ace-next-slide');
+
+      function showAceSlide(n) {
+        aceSlides.forEach((slide, idx) => {
+          if (idx === n) {
+            slide.classList.remove('hidden');
+          } else {
+            slide.classList.add('hidden');
+          }
+        });
+        aceDots.forEach((dot, idx) => {
+          if (idx === n) {
+            dot.classList.remove('bg-gray-300');
+            dot.classList.add('bg-brand-purple');
+          } else {
+            dot.classList.remove('bg-brand-purple');
+            dot.classList.add('bg-gray-300');
+          }
+        });
+        if (aceSlideIndicator) {
+          aceSlideIndicator.textContent = `${n + 1} / ${aceSlides.length}`;
+        }
+        currentAceSlide = n;
+      }
+
+      if (acePrevBtn) {
+        acePrevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let n = currentAceSlide - 1;
+          if (n < 0) n = aceSlides.length - 1;
+          showAceSlide(n);
+        });
+      }
+      if (aceNextBtn) {
+        aceNextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let n = currentAceSlide + 1;
+          if (n >= aceSlides.length) n = 0;
+          showAceSlide(n);
+        });
+      }
+      aceDots.forEach((dot, idx) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showAceSlide(idx);
+        });
+      });
+    }
+
+    // Modal logic for Poster & Mewarnaii slider photo
+    const openPosterBtn = document.getElementById('open-poster-modal');
+    const posterModal = document.getElementById('poster-modal');
+    const closePosterBtn = document.getElementById('close-poster-modal');
+    const posterModalContent = document.getElementById('poster-modal-content');
+
+    if (openPosterBtn && posterModal) {
+      openPosterBtn.addEventListener('click', () => {
+        posterModal.classList.remove('hidden');
+        setTimeout(() => {
+          posterModalContent.classList.remove('scale-95');
+          posterModalContent.classList.add('scale-100');
+        }, 10);
+      });
+
+      const closePosterFunc = () => {
+        posterModalContent.classList.remove('scale-100');
+        posterModalContent.classList.add('scale-95');
+        setTimeout(() => {
+          posterModal.classList.add('hidden');
+        }, 200);
+      };
+
+      closePosterBtn.addEventListener('click', closePosterFunc);
+      posterModal.addEventListener('click', (e) => {
+        if (e.target === posterModal) {
+          closePosterFunc();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closePosterFunc();
+        }
+      });
+
+      let currentPosterSlide = 0;
+      const posterSlides = posterModal.querySelectorAll('.poster-slide-item');
+      const posterDots = posterModal.querySelectorAll('.poster-dot-btn');
+      const posterSlideIndicator = document.getElementById('poster-slide-indicator');
+      const posterPrevBtn = document.getElementById('poster-prev-slide');
+      const posterNextBtn = document.getElementById('poster-next-slide');
+
+      function showPosterSlide(n) {
+        posterSlides.forEach((slide, idx) => {
+          if (idx === n) {
+            slide.classList.remove('hidden');
+          } else {
+            slide.classList.add('hidden');
+          }
+        });
+        posterDots.forEach((dot, idx) => {
+          if (idx === n) {
+            dot.classList.remove('bg-gray-300');
+            dot.classList.add('bg-brand-purple');
+          } else {
+            dot.classList.remove('bg-brand-purple');
+            dot.classList.add('bg-gray-300');
+          }
+        });
+        if (posterSlideIndicator) {
+          posterSlideIndicator.textContent = `${n + 1} / ${posterSlides.length}`;
+        }
+        currentPosterSlide = n;
+      }
+
+      if (posterPrevBtn) {
+        posterPrevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let n = currentPosterSlide - 1;
+          if (n < 0) n = posterSlides.length - 1;
+          showPosterSlide(n);
+        });
+      }
+      if (posterNextBtn) {
+        posterNextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          let n = currentPosterSlide + 1;
+          if (n >= posterSlides.length) n = 0;
+          showPosterSlide(n);
+        });
+      }
+      posterDots.forEach((dot, idx) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showPosterSlide(idx);
+        });
+      });
+    }
+
+    // Puzzle letters shatter & reassemble logic
+    const puzzleLetters = document.querySelectorAll('.puzzle-letter');
+    puzzleLetters.forEach((letter) => {
+      const randomX = (Math.random() - 0.5) * 600;
+      const randomY = (Math.random() - 0.5) * 500 - 100;
+      const randomRot = (Math.random() - 0.5) * 540;
+      letter.style.setProperty('--dx', `${randomX}px`);
+      letter.style.setProperty('--dy', `${randomY}px`);
+      letter.style.setProperty('--drot', `${randomRot}deg`);
+
+      letter.addEventListener('click', () => {
+        if (!letter.classList.contains('shattered')) {
+          letter.classList.add('shattered');
+          setTimeout(() => {
+            letter.classList.remove('shattered');
+          }, 3500);
+        }
+      });
+    });
+  });
+</script>
+</body></html>
